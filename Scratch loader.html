@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch Game Loader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input {
+            padding: 8px;
+            margin: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        iframe {
+            margin-top: 20px;
+            width: 800px;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter a Scratch Game ID</h2>
+    <input type="text" id="scratchID" placeholder="Enter Scratch game ID">
+    <button onclick="loadGame()">Load Game</button>
+    
+    <div id="gameContainer">
+        <iframe id="scratchFrame" style="display: none;"></iframe>
+    </div>
+
+    <script>
+        function loadGame() {
+            let gameID = document.getElementById("scratchID").value.trim();
+            if (gameID) {
+                let iframe = document.getElementById("scratchFrame");
+                iframe.src = `https://scratch.mit.edu/projects/${gameID}/embed`;
+                iframe.style.display = "block";
+            } else {
+                alert("Please enter a valid Scratch game ID.");
+            }
+        }
+    </script>
+</body>
+</html>
